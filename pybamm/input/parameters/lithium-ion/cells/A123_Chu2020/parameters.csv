@@ -1,0 +1,38 @@
+Name [units],Value,Reference,Notes
+# Empty rows and rows starting with ‘#’ will be ignored,,,
+,,,
+# Macroscale geometry,,,
+Negative current collector thickness [m],0.0004,Howie Chu Thermography,
+Negative electrode thickness [m],0.0027,Howie Chu Thermography,
+Separator thickness [m],0.0006,Howie Chu Thermography,
+Positive electrode thickness [m],0.0027,Howie Chu Thermography,
+Positive current collector thickness [m],0.0004,Howie Chu Thermography,
+Electrode height [m],0.2,A123 20 Ah Nanophosphate,Not needed for 1D
+Electrode width [m],0.15,A123 20 Ah Nanophosphate,Not needed for 1D
+Negative tab width [m],0.048,,
+Negative tab centre y-coordinate [m],0.036,,
+Negative tab centre z-coordinate [m],0.2,,
+Positive tab width [m],0.048,,
+Positive tab centre y-coordinate [m],0.114,,
+Positive tab centre z-coordinate [m],0.2,,
+,,,
+# Current collector properties ,,,
+Negative current collector conductivity [S.m-1],60000000,Chu2020,copper
+Positive current collector conductivity [S.m-1],10000000,Chu2020,aluminium
+,,,
+# Density,,,
+Negative current collector density [kg.m-3],8954,,
+Positive current collector density [kg.m-3],2707,,
+,,,
+# Specific heat capacity,,,
+Negative current collector specific heat capacity [J.kg-1.K-1],259,,
+Positive current collector specific heat capacity [J.kg-1.K-1],857,,
+,,,
+# Thermal conductivity,,,
+Negative current collector thermal conductivity [W.m-1.K-1],380,,
+Positive current collector thermal conductivity [W.m-1.K-1],380,,
+,,,
+# Electrical,,,
+Cell capacity [A.h],20,,
+Typical current [A],20,,1C current
+Current function [A],20,,1C current
