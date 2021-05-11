@@ -79,7 +79,7 @@ class TestJacobian(unittest.TestCase):
                 [0, 0, 0, 0, 0, 2, 0, 0],
             ]
         )
-        dfunc_dy = func.jac(y).simplify().evaluate(y=y0)
+        dfunc_dy = func.jac(y).evaluate(y=y0)
         np.testing.assert_array_equal(jacobian, dfunc_dy.toarray())
 
         # when differentiating by independent part of the state vector
@@ -222,8 +222,13 @@ class TestJacobian(unittest.TestCase):
         a = 2 * pybamm.PrimaryBroadcast(curr_coll_vector, a_dom)
         b = pybamm.PrimaryBroadcast(curr_coll_vector, b_dom)
         c = 3 * pybamm.PrimaryBroadcast(curr_coll_vector, c_dom)
+        # Add bounds for compatibility with the discretisation
+        a.bounds = (-np.inf, np.inf)
+        b.bounds = (-np.inf, np.inf)
+        c.bounds = (-np.inf, np.inf)
 
-        conc = pybamm.Concatenation(a, b, c)
+        conc = pybamm.concatenation(a, b, c)
+        conc.bounds = (-np.inf, np.inf)
         disc.set_variable_slices([conc])
         conc_disc = disc.process_symbol(conc)
         jac = conc_disc.jac(y).evaluate().toarray()
@@ -239,7 +244,7 @@ class TestJacobian(unittest.TestCase):
         c = pybamm.Variable(
             "c", domain=c_dom, auxiliary_domains={"secondary": "current collector"}
         )
-        conc = pybamm.Concatenation(a, b, c)
+        conc = pybamm.concatenation(a, b, c)
         disc.set_variable_slices([conc])
         conc_disc = disc.process_symbol(conc)
         y0 = np.ones(1500)
